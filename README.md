@@ -1,13 +1,13 @@
 # dobby-security
 
 
-Dobby Security Tool is a script that checks for security around deploying dobby containers in production
+Dobby Security is a script that checks for security around deploying dobby containers in production
 
 The tests are automated for each dobby containers.
 
-Running Dobby Security Tool
+**Running Dobby Security Tool**
 
-git clone https://github.com/docker/docker-bench-security.git
+git clone https://github.com/DineshkumarJP/dobby-security.git
 
 cd dobby-security
 
