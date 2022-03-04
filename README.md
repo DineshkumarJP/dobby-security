@@ -1,4 +1,4 @@
-# dobby-security
+# dobby-security-tool
 
 
 Dobby Security Tool is a script based tool for checking security configurations of dobby container.
