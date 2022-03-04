@@ -1,23 +1,23 @@
 #!/bin/bash
 
-test_1() {
-  local testid="Test1"
-  local desc="Run the DobbyDaemon as non-root user"
+test_2_1() {
+  local testid="2.1"
+  local desc="Run the Dobby daemon as a non-root user, if possible"
   local check="$testid - $desc"
   local output
   
   output=$(ps -fe | grep "DobbyDeamon"| awk '{print $1}')
   if [ "$output" == "root" ]; then
-      warn "$check [DobbyDeamon running as root]"
+      warn "$check"
 	  return
   fi
   pass "$check"
 }
 
 
-test_2() {
-	local testid="Test2"
-	local desc="User Namespace Support"
+test_2_9() {
+	local testid="2.9"
+	local desc="Enable user namespace support"
 	local check="$testid - $desc"
 	local child_pid
 	local DobbyInit_PID
@@ -30,7 +30,7 @@ test_2() {
 	output=$(cat /proc/$child_pid/status | grep '^Uid:' | awk '{print $3}')
    
     if [ "$output" == "0"  ]; then
-      fail "$check [Namespace PID set as root]"
+      fail "$check"
       return
     fi
     pass "$check"

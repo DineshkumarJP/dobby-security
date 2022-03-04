@@ -1,8 +1,8 @@
 #!/bin/bash
 
-test_9() {
-	local testid="Test9"
-	local desc="User ID for the Container"
+test_4_1() {
+	local testid="4.1"
+	local desc="Ensure that a user for the container has been created"
 	local check="$testid - $desc"
 	local child_pid
 	local DobbyInit_PID
@@ -15,7 +15,7 @@ test_9() {
 	output=$(cat /proc/$child_pid/status | grep '^Uid:' | awk '{print $3}')
    
     if [ "$output" == "0"  ]; then
-      fail "$check [Container user id as root]"
+      fail "$check"
       return
     fi
     pass "$check"

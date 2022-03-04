@@ -15,7 +15,7 @@ crunVersion=$(crun --version)
 . ./tests/4_dobby_container_runtime_test.sh
 
 # Check for required program(s)
-req_programs 'awk grep stat tee tail wc xargs sed'
+req_programs 'awk grep stat sed DobbyDeamon DobbyInit DobbyTool'
 
 # Default Values
 totalpass=0
@@ -48,29 +48,29 @@ main() {
 
 printtxt "\n${bldbluclr}Dobby Daemon Configuration Test ${txtrst}"
 
-test_1
-test_2
+test_2_1
+test_2_9
 
 printtxt "\n${bldbluclr}Dobby Daemon Configuration File Test ${txtrst}"
 
-test_3
-test_4
-test_5
-test_6
-test_7
-test_8
+test_3_1
+test_3_2
+test_3_3
+test_3_4
+test_3_17
+test_3_18
 
 printtxt "\n${bldbluclr}Dobby Container images Test ${txtrst}"
-test_9
+test_4_1
 
 printtxt "\n${bldbluclr}Dobby Continer Runtime Test ${txtrst}"
 
-test_10
-test_11
-test_12
-test_13
-test_14
-test_15
+test_5_9
+test_5_10
+test_5_15
+test_5_17
+test_5_28
+test_5_29
 
 totalcount=$(($totalpass+$totalfail+$totalwarn))
 printtxt "\n\n${bldbluclr}Test Results Summary${txtrst}"

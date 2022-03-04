@@ -1,8 +1,8 @@
 #!/bin/bash
 
-test_3() {
-  local testid="Test3"
-  local desc="dobby.service file ownership is set to root:root"
+test_3_1() {
+  local testid="3.1"
+  local desc="Ensure that the dobby.service file ownership is set to root:root"
   local check="$testid - $desc"
   local file
 
@@ -20,9 +20,9 @@ test_3() {
   warn "$check [ $file file is not found]"
 }
 
-test_4() {
-  local testid="Test4"
-  local desc="dobby.service file permission is set to 644"
+test_3_2() {
+  local testid="3.2"
+  local desc="Ensure that dobby.service file permissions are appropriately set"
   local check="$testid - $desc"
   local file
 
@@ -33,40 +33,40 @@ test_4() {
       pass "$check"
       return
     fi
-    fail "$check [Wrong ownership]"
+    fail "$check"
     return
   fi
   
   warn "$check [ $file file is not found]"
 }
 
-test_5() {
-  local testid="Test5"
-  local desc="dobbyPty.sock file ownership is set to root:root"
+test_3_3() {
+  local testid="3.3"
+  local desc="Ensure that dobbyPty.sock file ownership is set to root:root"
   local check="$testid - $desc"
  
     if [ "$(stat -c %u%g "/tmp/dobbyPty.sock")" -eq 00 ]; then
       pass "$check"
       return
     fi
-    fail "$check [Wrong ownership]"
+    fail "$check"
 }
 
-test_6() {
-  local testid="Test6"
-  local desc="dobbyPty.sock file permission is set to 644"
+test_3_4() {
+  local testid="3.4"
+  local desc="Ensure that dobbyPty.sock file permissions are set to 644 or more restrictive"
   local check="$testid - $desc"
 
     if [ "$(stat -c %a "/tmp/dobbyPty.sock")" -le 644 ]; then
       pass "$check"
       return
     fi
-    fail "$check [Wrong ownership]"
+    fail "$check"
 }
 
-test_7() {
-  local testid="Test7"
-  local desc="dobby.json file ownership is set to root:root"
+test_3_17() {
+  local testid="3.17"
+  local desc="Ensure that the dobby.json file ownership is set to root:root"
   local check="$testid - $desc"
   local file
 
@@ -77,16 +77,16 @@ test_7() {
       pass "$check"
       return
     fi
-    fail "$check [Wrong ownership]"
+    fail "$check"
     return
   fi
   
   warn "$check [ $file file is not found]"
 }
 
-test_8() {
-  local testid="Test8"
-  local desc="dobby.json file permission is set to 644"
+test_3_18() {
+  local testid="3.18"
+  local desc="Ensure that dobby.json file permissions are set to 644 or more restrictive"
   local check="$testid - $desc"
   local file
 
@@ -97,7 +97,7 @@ test_8() {
       pass "$check"
       return
     fi
-    fail "$check [Wrong ownership]"
+    fail "$check"
     return
   fi
   

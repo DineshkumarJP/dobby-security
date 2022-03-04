@@ -1,8 +1,8 @@
 #!/bin/bash
 
-test_10() {
-	local testid="Test10"
-	local desc="Host Namespace is not shared"
+test_5_9() {
+	local testid="5.9"
+	local desc="Ensure that the host's network namespace is not shared"
 	local check="$testid - $desc"
 	local output
 
@@ -15,39 +15,43 @@ test_10() {
     fail "$check"
 }
 
-test_11() {
-	local testid="Test11"
-	local desc="Memory limit of the container"
+test_5_10() {
+	local testid="5.10"
+	local desc="Ensure that the memory usage for containers is limited"
 	local check="$testid - $desc"
 	local output
   
 	output=$(cat /sys/fs/cgroup/memory/$containername/memory.limit_in_bytes)
    
     if [ "$output" == "0"  ]; then
-      fail "$check [ No Memory limit of the container]"
+      fail "$check"
       return
     fi
     pass "$check"
 }
 
-test_12() {
-	local testid="Test12"
-	local desc="Host Process Namespace is not shared"
+test_5_15() {
+	local testid="5.15"
+	local desc="Ensure that the host's process namespace is not shared"
 	local check="$testid - $desc"
 	local output
   
 	output=$(DobbyTool info $containername | jsonValue nsPid)
-   
-    if [ "$output" == "0"  ]; then
-      fail "$check [ Host Process Namespace is set as root ]"
+	nspid=$(echo $output | awk '{ print $1}')
+		
+	output=$(DobbyTool info $containername | jsonValue pid)
+	pid=$(echo $output | awk '{ print $1}')
+
+    if [ "$nspid" == "$pid" ]; then
+      fail "$check"
       return
     fi
     pass "$check"
 }
 
-test_13() {
-	local testid="Test13"
-	local desc="Host devices are not directly exposed to containers"
+test_5_17() {
+	local testid="5.17"
+	local desc="Ensure that host devices are not directly exposed to containers"
 	local check="$testid - $desc"
 	local output
   
@@ -57,34 +61,34 @@ test_13() {
       pass "$check"
       return
     fi
-    fail "$check [Container have access to host devices]"
+    fail "$check"
 }
 
-test_14() {
-	local testid="Test14"
-	local desc="PIDs cgroup limit is used"
+test_5_28() {
+	local testid="5.28"
+	local desc="Ensure that the PIDs cgroup limit is used"
 	local check="$testid - $desc"
 	local output
   
 	output=$(cat /sys/fs/cgroup/pids/$containername/pids.max)
    
     if [ "$output" == "max"  ]; then
-      fail "$check [No limit is set]"
+      fail "$check"
       return
     fi
     pass "$check"
 }
 
-test_15() {
-	local testid="Test15"
-	local desc="Default bridge 'dobby0' is not used"
+test_5_29() {
+	local testid="5.29"
+	local desc="Ensure that Docker's default bridge "dobby0" is not used"
 	local check="$testid - $desc"
 	local output
   
 	output=$(brctl show | grep "dobby0" | awk '{ print $1}')
    
     if [ "$output" == "dobby0"  ]; then
-      fail "$check [Default bridge is $output]"
+      fail "$check"
       return
     fi
     pass "$check"
