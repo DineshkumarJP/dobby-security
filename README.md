@@ -1,7 +1,9 @@
 # dobby-security
 
 
-Dobby Security Tool is a script based tool for checking security configurations of dobby container. It is based on CIS_Docker_Benchmark_v1.3.1 standard and heavily influenced from docker-bench-security.
+Dobby Security Tool is a script based tool for checking security configurations of dobby container.
+
+It is based on CIS_Docker_Benchmark_v1.3.1 standard and heavily influenced from docker-bench-security.
 
 The tests are automated for each dobby containers.
 
