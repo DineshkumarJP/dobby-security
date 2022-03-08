@@ -46,11 +46,11 @@ header_info() {
 header "# ============================================================================================
 # Dobby Security Tool v$version                                                                 
 #                                                                                            
-# Dobby Version $DobbyVersion
+# Dobby Version : $DobbyVersion
 #
-# crun Version $crunVersion
+# crun Version : $crunVersion
 #
-# Checks for security around deploying Dobby containers in production                        
+# A script based tool for security vulnerability scanning of dobby container                        
 # ============================================================================================"
 }
 
