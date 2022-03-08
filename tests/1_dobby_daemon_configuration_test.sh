@@ -6,7 +6,7 @@ test_2_1() {
   local check="$testid - $desc"
   local output
   
-  output=$(ps -fe | grep "DobbyDeamon"| awk '{print $1}')
+  output=$(ps -fe | grep "DobbyDaemon"| awk '{print $1}')
   if [ "$output" == "root" ]; then
       warn "$check"
 	  return
