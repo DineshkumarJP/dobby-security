@@ -15,7 +15,7 @@ crunVersion=$(crun --version)
 . ./tests/4_dobby_container_runtime_test.sh
 
 # Check for required program(s)
-req_programs 'awk grep stat sed DobbyDaemon DobbyTool'
+req_programs 'awk grep stat sed cut DobbyDaemon DobbyTool'
 
 # Default Values
 totalpass=0
