@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #  Version details
-version=0.0.1
+version=0.1
 DobbyVersion=$(DobbyDaemon --version)
 crunVersion=$(crun --version)
 
@@ -15,7 +15,7 @@ crunVersion=$(crun --version)
 . ./tests/4_dobby_container_runtime_test.sh
 
 # Check for required program(s)
-req_programs 'awk grep stat sed DobbyDeamon DobbyInit DobbyTool'
+req_programs 'awk grep stat sed DobbyDaemon DobbyTool'
 
 # Default Values
 totalpass=0
